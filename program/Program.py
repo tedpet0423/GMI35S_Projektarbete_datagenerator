@@ -64,7 +64,7 @@ for counter in range(10000):
     #sales = int(((((rating*location)+(price/category))*(returnrate/0.01)+random.randint(0,10))*100)+random.randint(0,100))
     #sales = int((sales_multiplier+price+color+returnrate+(rating*3)+location+base_discount)*10+(random.randint(0,10)))
 
-    sales = int((sales_multiplier-(price*0.0001)+((rating*3)/10)-base_discount-returnrate)+(random.randint(1,1000)*0.001)*10000)
+    sales = int(((price*0.0001)+(rating)-base_discount-returnrate)*1000)
     net_price = price * base_discount
     revenue = net_price * sales
     write_to_sales_data(id2, rating, returnrate,location, sales, revenue)
