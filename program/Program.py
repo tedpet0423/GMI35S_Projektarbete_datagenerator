@@ -41,7 +41,7 @@ def write_to_product_data(ID, color, category, price, rating, base_discount, net
     with open('product_data3.csv', 'a', encoding='utf-8-sig') as file:
         file.write(f'\n{ID},{color},{category},{price},{rating},{base_discount},{net_price}')
 
-for counter in range(10000):
+for counter in range(3000):
     counter += 1
     id = str(counter).zfill(4)
     id2 = f'P{id}'
@@ -52,29 +52,32 @@ for counter in range(10000):
     sales_multiplier = 10
     if category == 1:
         base_discount = 0.8
-        rating = ((random.randint(7, 9) + (random.randint(0, 10) * 0.1)))
+        rating = ((random.randint(1, 9) + (random.randint(5, 10) * 0.1)))
         price = ((random.randint(12, 19) * 100 + 99))
     if category == 2:
         base_discount = 0.75
-        rating = ((random.randint(5, 8) + (random.randint(0, 10) * 0.1)))
+        rating = ((random.randint(1, 9) + (random.randint(4, 10) * 0.1)))
         price = ((random.randint(8, 15) * 100 + 99))
     if category == 3:
         base_discount = 0.7
-        rating = ((random.randint(3, 7) + (random.randint(0, 10) * 0.1)))
+        rating = ((random.randint(1, 9) + (random.randint(3, 10) * 0.1)))
         price = ((random.randint(5, 12) * 100 + 99))
     if category == 4:
         base_discount = 0.6
-        rating = ((random.randint(2, 6) + (random.randint(0, 10) * 0.1)))
+        rating = ((random.randint(1, 9) + (random.randint(2, 10) * 0.1)))
         price = ((random.randint(3, 10) * 100 + 99))
     if category == 5:
         base_discount = 0.5
-        rating = ((random.randint(1, 4) + (random.randint(0, 10) * 0.1)))
+        rating = ((random.randint(1, 9) + (random.randint(1, 10) * 0.1)))
         price = ((random.randint(0, 7) * 100 + 99))
     #sales = int(((((rating*location)+(price/category))*(returnrate/0.01)+random.randint(0,10))*100)+random.randint(0,100))
     #sales = int((sales_multiplier+price+color+returnrate+(rating*3)+location+base_discount)*10+(random.randint(0,10)))
     
     returnrate = ((10 - rating) + (random.randint(0, 10) * 0.1) * 0.01) / 100
-    sales = int(((1000/price)+(rating)-base_discount-returnrate)*1000)
+   
+    sales = int((((2000-price)+((10-rating))-(returnrate*10)*200)*(100+(random.randint(0,10))-60))+8500)
+    print(f'{price},{sales}, {rating}')
+
     net_price = price * base_discount
     revenue = net_price * sales
     margin = sales * (price-net_price)
